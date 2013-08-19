@@ -1,0 +1,32 @@
+{
+    "extensionName": {
+        "message":"Webpage Spellchecker"
+    },
+    "extensionDescription": {
+        "message":"Chrome extension that spell checks an entire web page and not just input boxes"
+    },
+    "customWords": {
+        "message":"Add/remove any custom words here. Words should be comma separated eg. apple,banana,cherry."
+    },
+    "wordsTabName": {
+        "message":"Words"
+    },
+    "customisationText": {
+        "message":"Customisation"
+    },
+    "excludedWords": {
+        "message":"Add/remove any excluded (ignored) words here. Words should be comma separated eg. apple,banana,cherry."
+    },
+    "customWordsPlaceholder": {
+        "message":"enter and custom words here"
+    },
+    "excludedWordsPlaceholder": {
+        "message":"enter and custom words here"
+    },
+    "thanks": {
+        "message":"You changes were saved. Thanks."
+    },
+    "error": {
+        "message":"You changes could not be saved. Please try again."
+    }
+}

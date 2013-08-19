@@ -1,0 +1,40 @@
+<!doctype html>
+<style type="text/css">
+	#donate {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: lightgrey;
+		padding: 10px;
+		width: 540px;
+		font-family: Helvetica, Ubuntu, Arial, sans-serif;
+        border-radius: 10px;
+        padding-bottom: 40px;
+	}
+    
+	h1 {
+		font-size: 2em;
+	}
+    
+    p {
+        padding-bottom: 2em;
+    }
+</style>
+<div id="donate" class="donate">
+    <h1>Donate</h1>
+    <p>You can donate to me using PayPal until I can find a more suitable mechanism: </p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" name="donateForm" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="gkwelding@gmail.com">
+        <input type="hidden" name="lc" value="GB">
+        <input type="hidden" name="item_name" value="chrome spell check extension">
+        <input type="hidden" name="amount" value="0.00">
+        <input type="hidden" name="currency_code" value="GBP">
+        <input type="hidden" name="button_subtype" value="services">
+        <input type="hidden" name="no_note" value="0">
+        <input type="hidden" name="shipping" value="0.00">
+        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+    </form>
+</div>
