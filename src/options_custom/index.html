@@ -11,35 +11,41 @@
         
         <!-- Stylesheets -->
         <link id="favicon" rel="icon" href="">
-        <link rel="stylesheet" href="lib/default.css" media="screen">
-        <link rel="stylesheet" href="css/main.css" media="screen">
-        <link rel="stylesheet" href="css/setting.css" media="screen">
         <link rel="stylesheet" href="custom.css" media="screen">
         
-        <!-- JavaScripts -->
-        <script src="lib/mootools-core.js"></script>
-        <script src="lib/store.js"></script>
-        <script src="js/classes/tab.js"></script>
-        <script src="js/classes/setting.js"></script>
-        <script src="js/classes/search.js"></script>
-        <script src="js/classes/fancy-settings.js"></script>
-        <script src="i18n.js"></script>
-        <script src="js/i18n.js"></script>
-        <script src="manifest.js"></script>
+        <script src="/js/jquery/jquery.min.js"></script>
         <script src="settings.js"></script>
     </head>
-    <body class="no-select">
+    <body>
         <div id="sidebar" class="fancy">
-            <img id="icon" src="" alt=""><h1 id="settings-label"></h1>
+            <img id="icon" src="icon.png" alt=""><h1 id="settings-label">Settings</h1>
             <div id="tab-container">
-                <div id="search-container" class="tab" style="display: none;">
-                    <input id="search" type="search" placeholder="">
-                </div>
+                <div class="tab active">Words</div>
             </div>
         </div>
         <div id="content">
-            <div id="search-result-container" class="tab-content">
-                <h2 id="search-label"></h2>
+            <div class="tab-content show">
+                <h2>Customise</h2>
+                
+                <div class="setting bundle text">
+                    <table class="setting group">
+                    <tr>
+                        <td class="setting group-name">Words</td>
+                        <td class="setting group-content">
+                            <div class="setting container text">
+                                <label class="setting label text">Custom Words:</label> <br />
+                                <small>enter custom words as comma separated words eg. apple,banana,cherry etc...</small>
+                                <textarea class="setting element text" id="customWords" style="margin-left: 2px;"></textarea>
+                            </div>
+                            <div class="setting container text">
+                                <label class="setting label text">Excluded Words:</label> <br />
+                                <small>enter excluded words as comma separated words eg. apple,banana,cherry etc...</small>
+                                <textarea class="setting element text" id="excludedWords" style="margin-left: 2px;"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </body>

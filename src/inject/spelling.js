@@ -1,5 +1,7 @@
-$(document).ready(function(){
-
+jQuery(document).ready(function(){
+    chrome.extension.sendRequest({method: "getSettings"}, function(response) {
+      console.log(response.data);
+    });
 });
 
 var soundex = function (s) {
