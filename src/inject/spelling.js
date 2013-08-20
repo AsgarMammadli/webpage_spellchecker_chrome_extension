@@ -15,18 +15,26 @@ var webpageSpellingExtension = {
     
     addUnderline: function($el, match) {
         var re = new RegExp(match, 'g');
-        $el.html($el.html().replace(re, '<span class="webpageSpellingExtensionError">'+match+'</span>'));
+        console.log(match);
+        console.log($el);
+        console.log($el.text());
+        //var newHTML = $el.html().replace(re, '<span class="webpageSpellingExtensionError">'+match+'</span>');
+        //$el.html(newHTML);
     },
     
     checkSpelling: function(word, $el) {
-        var wordSound = this.soundex(word);
+        var test = jQuery.trim(word.replace(/[0-9]/g,''));
         
-        if(typeof this.sounds[wordSound] != 'undefined') {
-            if(this.sounds[wordSound].indexOf(word.toLowerCase())<0) {
+        if(test != '') {
+            var wordSound = this.soundex(word);
+
+            if(typeof this.sounds[wordSound] != 'undefined') {
+                if(this.sounds[wordSound].indexOf(word.toLowerCase())<0) {
+                    this.addUnderline($el, word);
+                }
+            } else {
                 this.addUnderline($el, word);
             }
-        } else {
-            this.addUnderline($el, word);
         }
     },
     
@@ -64,12 +72,20 @@ jQuery(document).ready(function(){
     chrome.extension.sendRequest({method: "getDictionaries"}, function(response) {
         webpageSpellingExtension.setDictionaries(response.data);
         
-        jQuery('div,span,p,a,h1,h2,h3,h4,h5,h6,h7,h8,td').each(function(){
+        jQuery('p:visible,a:visible,h1:visible,h2:visible,h3:visible,h4:visible,h5:visible,h6:visible,h7:visible,h8:visible,td:visible').each(function(){
             var $elem = jQuery(this);
-            var words = jQuery.trim(jQuery(this).text().replace(/[^a-zA-Z -]/g,"").replace(/ +/g, " ")).split(" ");
+            var text = jQuery.trim(jQuery(this).text().replace(/&quot;/g, '"')
+                                                      .replace(/&#39;/g, "'")
+                                                      .replace(/&lt;/g, '<')
+                                                      .replace(/&gt;/g, '>')
+                                                      .replace(/&amp;/g, '&'))
+                                                      .replace(/(<([^>]+)>)/ig,"");
+            
+            text = text.replace(/[^a-zA-Z0-9\ \']/g," ").replace(/ +/g, " ");
+            var words = text.split(" ");
             jQuery.each(words,function(index, value) {
-                if(value != '') {
-                    //webpageSpellingExtension.checkSpelling(value, $elem);
+                if(jQuery.trim(value) != '') {
+                    webpageSpellingExtension.checkSpelling(value, $elem);
                 }
             });
         });
