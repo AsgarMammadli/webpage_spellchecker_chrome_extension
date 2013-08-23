@@ -15,11 +15,9 @@ var webpageSpellingExtension = {
     
     addUnderline: function($el, match) {
         var re = new RegExp(match, 'g');
-        console.log(match);
-        console.log($el);
-        console.log($el.text());
-        //var newHTML = $el.html().replace(re, '<span class="webpageSpellingExtensionError">'+match+'</span>');
-        //$el.html(newHTML);
+        var text = $el.clone().children().remove().end().text();
+        var text1 = $el.clone().children().remove().end().text().replace(re, '<span class="webpageSpellingExtensionError">'+match+'</span>');
+        $el.html($el.html().replace(text,text1));
     },
     
     checkSpelling: function(word, $el) {
@@ -72,7 +70,7 @@ jQuery(document).ready(function(){
     chrome.extension.sendRequest({method: "getDictionaries"}, function(response) {
         webpageSpellingExtension.setDictionaries(response.data);
         
-        jQuery('p:visible,a:visible,h1:visible,h2:visible,h3:visible,h4:visible,h5:visible,h6:visible,h7:visible,h8:visible,td:visible').each(function(){
+        jQuery('span,pre,code,p,a,h1,h2,h3,h4,h5,h6,h7,h8,td').each(function(){
             var $elem = jQuery(this);
             var text = jQuery.trim(jQuery(this).text().replace(/&quot;/g, '"')
                                                       .replace(/&#39;/g, "'")

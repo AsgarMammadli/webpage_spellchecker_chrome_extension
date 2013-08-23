@@ -39,5 +39,6 @@
                 "src/inject/spelling.css"
             ]
         }
-    ]
+    ],
+    "web_accessible_resources": ["/js/jquery/jquery-2.0.3.min.map"]
 }
